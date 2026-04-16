@@ -16,3 +16,10 @@ WHERE e.descricao = 'Workshop Node.js'
 AND i.presente = 1;
 
 -- Total de pessoas que faltaram
+SELECT 
+    e.descricao AS evento,
+    COUNT(i.id) AS total_faltaram
+FROM eventos e
+JOIN inscricoes i ON i.evento_id = e.id
+WHERE e.descricao = 'Workshop Node.js'
+AND i.presente = 0;
