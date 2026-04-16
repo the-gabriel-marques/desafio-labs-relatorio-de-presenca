@@ -20,12 +20,11 @@ function exibirPainelExplorar() {
     if (!container || !db) return;
 
     try {
-        const res = db.exec("SELECT DISTINCT nome FROM encontros ORDER BY nome ASC");
-        
-        if (res.length > 0) {
+        const eventos = buscarCatalogoEventos(db);
+
+        if (eventos.length > 0) {
             container.innerHTML = ''; 
-            res[0].values.forEach(row => {
-                const nomeEncontro = row[0];
+            eventos.forEach(nomeEncontro => {
                 const botao = document.createElement('button');
                 botao.type = 'button';
                 botao.className = 'btn-chip'; 
