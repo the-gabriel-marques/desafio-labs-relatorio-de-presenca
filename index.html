@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labs — Relatório de Presença</title>
+    
+    <link rel="stylesheet" href="/src/css/style.css" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <header class="cabecalho">
+            <h1>Relatório de Presença</h1>
+            <p>Labs Talents — Gerenciamento de Encontros e Mentorias</p>
+        </header>
+
+        <main>
+            
+            <section class="card">
+                <h2 class="busca-titulo">🔍 Pesquisar Encontro</h2>
+                <div class="busca-row">
+                    <input type="text" id="campo-busca" placeholder="Digite o nome do curso..." />
+                    <button type="button" onclick="buscarEncontro()">Gerar Relatório</button>
+                </div>
+                
+                <div class="explorar-link-container">
+                    <a href="javascript:void(0)" class="link-explorar" onclick="alternarExplorar()">
+                         Não lembra o nome? Explorar todos os encontros
+                    </a>
+                </div>
+            </section>
+
+            <div id="modal-explorar" class="modal-overlay" style="display: none;">
+                <div class="card card-modal">
+                    <div class="modal-header">
+                        <h3>🌐 Catálogo de Encontros</h3>
+                        <button class="btn-fechar" onclick="alternarExplorar()">✕</button>
+                    </div>
+                    <p class="sugestao-label">Selecione um curso para abrir o relatório detalhado:</p>
+                    <div id="lista-encontros-chips" class="chips-container">
+                        <span class="status-carregando">Carregando catálogo...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="erro" role="alert" style="display:none"></div>
+
+            <section class="card" id="secao-relatorio" style="display:none">
+                <header>
+                    <p class="relatorio-titulo">📌 Relatório Detalhado</p>
+                    <h2 class="relatorio-nome" id="r-encontro">—</h2>
+                    <time class="relatorio-data" id="r-data">—</time>
+                </header>
+
+                <div class="cards-grid">
+                    <article class="mini-card">
+                        <span class="numero" id="r-inscritos">—</span>
+                        <span class="rotulo">Inscritos</span>
+                    </article>
+                    <article class="mini-card verde">
+                        <span class="numero" id="r-presentes">—</span>
+                        <span class="rotulo">Presentes</span>
+                    </article>
+                    <article class="mini-card vermelho">
+                        <span class="numero" id="r-faltaram">—</span>
+                        <span class="rotulo">Faltaram</span>
+                    </article>
+                    <article class="mini-card amarelo">
+                        <span class="numero" id="r-taxa">—</span>
+                        <span class="rotulo">Taxa</span>
+                    </article>
+                </div>
+
+                <div class="taxa-info">
+                    <div class="taxa-label">
+                        <span>Taxa de presença</span>
+                        <strong id="r-taxa-2">—</strong>
+                        <span id="r-class" style="margin-left: 10px;"></span>
+                    </div>
+                    <div class="barra-fundo">
+                        <div class="barra-preenchimento" id="barra-progresso"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card" id="secao-presentes" style="display:none">
+                <h3 class="secao-titulo">✅ Lista de Presença Confirmada</h3>
+                <div id="lista-presentes" class="lista-nomes"></div>
+            </section>
+
+            <section class="card">
+                <h3 class="secao-titulo">🏆 Ranking de Presença</h3>
+                <div class="table-container">
+                    <table class="tabela-ranking">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Encontro</th>
+                                <th>Inscritos</th>
+                                <th>Presentes</th>
+                                <th>Taxa %</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-ranking"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/src/js/banco.js" defer></script>
+    <script src="/src/js/calculos.js" defer></script>
+    <script src="/src/js/interface.js" defer></script>
+    <script src="/src/js/app.js" defer></script>
+</body>
+</html>

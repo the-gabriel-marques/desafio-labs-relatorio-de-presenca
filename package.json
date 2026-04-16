@@ -1,0 +1,25 @@
+{
+  "name": "desafio-labs-relatorio-de-presenca",
+  "version": "1.0.0",
+  "description": "Desafio 5 da Labs Talents para o desenvolvimento das habilidades de lógica de programação e banco de dados",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-gabriel-marques/desafio-labs-relatorio-de-presenca.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/the-gabriel-marques/desafio-labs-relatorio-de-presenca/issues"
+  },
+  "homepage": "https://github.com/the-gabriel-marques/desafio-labs-relatorio-de-presenca#readme",
+  "dependencies": {
+    "sql.js": "^1.14.1",
+    "sqlite3": "^6.0.1"
+  }
+}
