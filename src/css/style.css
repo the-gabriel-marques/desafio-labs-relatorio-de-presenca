@@ -1,0 +1,269 @@
+
+:root {
+    --cor-fundo:      #0f172a;
+    --cor-card:       #1e293b;
+    --cor-borda:      #334155;
+    --cor-texto:      #f1f5f9;
+    --cor-texto-2:    #94a3b8;
+    --cor-destaque:   #38bdf8;
+    --cor-verde:      #22c55e;
+    --cor-amarelo:    #f59e0b;
+    --cor-vermelho:   #ef4444;
+    --raio:           12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: 'Courier New', monospace;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ----------------------------------------------------------
+  Card
+---------------------------------------------------------- */
+section.card {
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 1.5rem;
+    position: relative;
+}
+
+header.cabecalho {
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 2px solid var(--cor-borda);
+    margin-bottom: 1rem;
+}
+
+header.cabecalho h1 {
+    font-size: 1.8rem;
+    color: var(--cor-destaque);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* ----------------------------------------------------------
+   Busca, Inputs e Link Explorar
+---------------------------------------------------------- */
+.busca-titulo, .secao-titulo {
+    color: var(--cor-destaque);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.busca-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 10px;
+}
+
+.busca-row input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    background: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    color: var(--cor-texto);
+    font-family: inherit;
+    outline: none;
+}
+
+.busca-row input:focus {
+    border-color: var(--cor-destaque);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.busca-row button {
+    padding: 0.8rem 1.5rem;
+    background: var(--cor-destaque);
+    color: var(--cor-fundo);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.explorar-link-container {
+    margin-top: 10px;
+}
+
+.link-explorar {
+    color: var(--cor-destaque);
+    font-size: 0.85rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link-explorar:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------------------
+ MODAL (Explorar Encontros)
+---------------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.card-modal {
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid var(--cor-destaque) !important;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btn-fechar {
+    background: none;
+    border: none;
+    color: var(--cor-texto-2);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btn-fechar:hover {
+    color: var(--cor-vermelho);
+}
+
+/* ----------------------------------------------------------
+   CHIPS E CATÁLOGO
+---------------------------------------------------------- */
+.chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.btn-chip {
+    background: rgba(56, 189, 248, 0.05);
+    color: var(--cor-destaque);
+    border: 1px solid var(--cor-borda);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-chip:hover {
+    background: var(--cor-destaque);
+    color: var(--cor-fundo);
+    transform: translateY(-3px);
+}
+
+/* ----------------------------------------------------------
+   Relatório e Barras
+---------------------------------------------------------- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.mini-card {
+    background: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.mini-card .numero { font-size: 2.2rem; font-weight: bold; color: var(--cor-destaque); display: block; }
+.mini-card.verde .numero { color: var(--cor-verde); }
+.mini-card.vermelho .numero { color: var(--cor-vermelho); }
+.mini-card.amarelo .numero { color: var(--cor-amarelo); }
+
+.barra-fundo {
+    height: 10px;
+    background: var(--cor-borda);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.barra-preenchimento {
+    height: 100%;
+    width: 0;
+    background: var(--cor-destaque);
+    transition: width 0.8s ease-out;
+}
+
+/* ----------------------------------------------------------
+   Listas e Tabelas
+---------------------------------------------------------- */
+.lista-nomes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.tabela-ranking {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-ranking th {
+    background: rgba(51, 65, 85, 0.3);
+    color: var(--cor-texto-2);
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.75rem;
+}
+
+.tabela-ranking td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+#erro {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid var(--cor-vermelho);
+    padding: 1rem;
+    color: var(--cor-vermelho);
+    margin: 10px 0;
+}
